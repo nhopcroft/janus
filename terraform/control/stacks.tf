@@ -5,6 +5,14 @@ locals {
       description  = "Central Administrative & Security Resources"
       project_root = "terraform/stacks/admin"
       id           = "admin"
+    }
+  }
+  stacks_to_not_create = [
+    {
+      name         = "Admin"
+      description  = "Central Administrative & Security Resources"
+      project_root = "terraform/stacks/admin"
+      id           = "admin"
     },
     {
       name         = "Network"
