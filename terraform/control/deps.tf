@@ -1,3 +1,4 @@
+/*
 resource "spacelift_stack_dependency" "auth__control" {
   stack_id            = spacelift_stack.auth.id
   depends_on_stack_id = spacelift_stack.control.id
@@ -224,3 +225,4 @@ resource "spacelift_stack_dependency_reference" "crypto_ssm_agent_role_arn" {
   trigger_always      = true
 }
 
+*/
