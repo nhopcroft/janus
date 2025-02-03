@@ -77,7 +77,7 @@ resource "spacelift_stack" "children" {
 
   repository = var.control_repository
 
-  branch            = "main"
+  branch            = local.git_branch
   terraform_version = "1.5.7"
 
   description  = each.value.description
@@ -85,8 +85,6 @@ resource "spacelift_stack" "children" {
   project_root = each.value.project_root
 
   labels = [
-    "infracost",
-    "aikido"
   ]
 }
 

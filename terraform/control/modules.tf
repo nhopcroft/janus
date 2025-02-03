@@ -19,7 +19,7 @@ resource "spacelift_module" "control_modules" {
   for_each = { for module in local.modules_to_create : module.name => module }
 
   terraform_provider = "aws"
-  branch             = "main"
+  branch             = local.git_branch
   repository         = var.control_repository
 
   labels = [

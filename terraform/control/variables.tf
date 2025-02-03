@@ -22,3 +22,7 @@ variable "runners_admin_pat" {
   description = "The personal access token for runner admin."
   sensitive   = true
 }
+
+locals {
+  git_branch = "nhcloud"
+}

@@ -11,12 +11,10 @@ resource "spacelift_stack" "control" {
   enable_well_known_secret_masking = true
 
   labels = [
-    "admin",
-    "aikido",
-    "infracost"
+    "admin"
   ]
 
-  branch            = "main"
+  branch            = local.git_branch
   description       = "Control Stack"
   name              = "ControlStack"
   project_root      = "terraform/control"
@@ -35,12 +33,10 @@ resource "spacelift_stack" "auth" {
   enable_well_known_secret_masking = true
 
   labels = [
-    "admin",
-    "aikido",
-    "infracost"
+    "admin"
   ]
 
-  branch            = "main"
+  branch            = local.git_branch
   description       = "Authorization Stack"
   name              = "Auth"
   project_root      = "terraform/stacks/auth"
