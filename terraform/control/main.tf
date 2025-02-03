@@ -18,7 +18,7 @@ resource "spacelift_stack" "control" {
 
   branch            = "main"
   description       = "Control Stack"
-  name              = "Control"
+  name              = "ControlStack"
   project_root      = "terraform/control"
   repository        = var.control_repository
   terraform_version = "1.5.7"
