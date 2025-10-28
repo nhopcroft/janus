@@ -23,7 +23,7 @@ resource "aws_iam_policy" "gh_oidc_runners" {
 
   policy = data.aws_iam_policy_document.gh_oidc_runners.json
 }
-
+/*
 data "aws_iam_policy_document" "runners_ec2" {
   # checkov:skip=CKV_AWS_111:This will be addressed in a future PR
   # checkov:skip=CKV_AWS_109:This will be addressed in a future PR
@@ -108,15 +108,15 @@ resource "aws_iam_policy" "runners_ec2" {
 
   policy = data.aws_iam_policy_document.runners_ec2.json
 }
-
+*/
 resource "aws_iam_role" "runners" {
   name               = "runners"
   path               = "/"
   assume_role_policy = data.aws_iam_policy_document.assume_role_ec2.json
 
   managed_policy_arns = [
-    aws_iam_policy.runners_ec2.arn,
-    aws_iam_policy.ssm_agent.arn,
+    //aws_iam_policy.runners_ec2.arn,
+    //aws_iam_policy.ssm_agent.arn,
     data.aws_iam_policy.AmazonSSMManagedInstanceCore.arn,
     aws_iam_policy.ubuntu_cloudimg_ecr.arn,
     aws_iam_policy.ubuntu_cloudimg_s3.arn,
