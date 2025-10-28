@@ -90,7 +90,7 @@ data "aws_iam_policy_document" "github_ec2" {
 
     resources = [
       aws_iam_role.runners.arn,
-      aws_iam_role.runners_controlled.arn
+      //aws_iam_role.runners_controlled.arn
     ]
   }
 }
