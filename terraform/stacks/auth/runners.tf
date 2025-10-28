@@ -124,7 +124,7 @@ resource "aws_iam_role" "runners" {
     aws_iam_policy.janus_ecr.arn,
   ]
 }
-
+/*
 resource "aws_iam_role" "runners_controlled" {
   name               = "runners-controlled"
   path               = "/"
@@ -135,13 +135,15 @@ resource "aws_iam_role" "runners_controlled" {
     data.aws_iam_policy.AmazonSSMManagedInstanceCore.arn
   ]
 }
+*/
 
 resource "aws_iam_instance_profile" "runners" {
   name = "runners"
   role = aws_iam_role.runners.name
 }
-
+/*
 resource "aws_iam_instance_profile" "runners_controlled" {
   name = "runners-controlled"
   role = aws_iam_role.runners_controlled.name
 }
+*/
