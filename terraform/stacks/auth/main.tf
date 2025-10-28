@@ -1,6 +1,6 @@
 data "aws_caller_identity" "current" {}
 data "aws_region" "current" {}
-
+/*
 module "github-oidc" {
   #checkov:skip=CKV_TF_1: Spacelift modules should be retrieved from Spacelift Module Registry
   source  = "spacelift.io/jhatler/github-oidc/aws"
@@ -17,3 +17,4 @@ module "github-oidc" {
     aws_iam_policy.janus_ecr.arn,
   ]
 }
+*/
