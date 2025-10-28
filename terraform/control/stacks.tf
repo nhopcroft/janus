@@ -79,6 +79,7 @@ resource "spacelift_stack" "children" {
 
   branch            = local.git_branch
   terraform_version = "1.10.6"
+  terraform_workflow_tool = "OPEN_TOFU"
 
   description  = each.value.description
   name         = each.value.name

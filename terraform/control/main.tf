@@ -21,6 +21,7 @@ resource "spacelift_stack" "control" {
   project_root      = "terraform/control"
   repository        = var.control_repository
   terraform_version = "1.10.6"
+  terraform_workflow_tool = "OPEN_TOFU"
 }
 
 # This is the auth stack, which shares our permissions
@@ -43,4 +44,5 @@ resource "spacelift_stack" "auth" {
   project_root      = "terraform/stacks/auth"
   repository        = var.control_repository
   terraform_version = "1.10.6"
+  terraform_workflow_tool = "OPEN_TOFU"
 }
