@@ -20,7 +20,7 @@ resource "spacelift_stack" "control" {
   name              = "Control"
   project_root      = "terraform/control"
   repository        = var.control_repository
-  terraform_version = "1.5.7"
+  terraform_version = "1.10.6"
 }
 
 # This is the auth stack, which shares our permissions
@@ -42,5 +42,5 @@ resource "spacelift_stack" "auth" {
   name              = "Auth"
   project_root      = "terraform/stacks/auth"
   repository        = var.control_repository
-  terraform_version = "1.5.7"
+  terraform_version = "1.10.6"
 }

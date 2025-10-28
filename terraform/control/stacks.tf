@@ -78,7 +78,7 @@ resource "spacelift_stack" "children" {
   repository = var.control_repository
 
   branch            = local.git_branch
-  terraform_version = "1.5.7"
+  terraform_version = "1.10.6"
 
   description  = each.value.description
   name         = each.value.name
