@@ -1,3 +1,4 @@
+
 data "spacelift_account" "current" {}
 
 # This is the control stack we are currently in
@@ -16,12 +17,12 @@ resource "spacelift_stack" "control" {
 
   branch            = local.git_branch
   description       = "Control Stack"
-  name              = "ControlStack"
+  name              = "Control"
   project_root      = "terraform/control"
   repository        = var.control_repository
   terraform_version = "1.5.7"
 }
-
+/*
 # This is the auth stack, which shares our permissions
 resource "spacelift_stack" "auth" {
   administrative        = true
@@ -43,3 +44,4 @@ resource "spacelift_stack" "auth" {
   repository        = var.control_repository
   terraform_version = "1.5.7"
 }
+*/
