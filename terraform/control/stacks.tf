@@ -155,13 +155,13 @@ resource "spacelift_environment_variable" "integration_control_repository" {
 
 # Pass through the control owner and repository to chilren
 resource "spacelift_environment_variable" "auth_control_owner" {
-  stack_id   = spacelift_stack.auth
+  stack_id   = spacelift_stack.auth.id
   name       = "TF_VAR_control_owner"
   value      = var.control_owner
   write_only = false
 }
 resource "spacelift_environment_variable" "auth_control_repository" {
-  stack_id   = spacelift_stack.auth
+  stack_id   = spacelift_stack.auth.id
   name       = "TF_VAR_control_repository"
   value      = var.control_repository
   write_only = false
