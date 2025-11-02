@@ -1,5 +1,10 @@
 locals {
-  stacks_to_create = [
+  stacks_to_create = concat(
+    local.root_stacks,
+    local.enabled_production_stacks,
+    local.enabled_stage_stacks
+  )
+  root_stacks = [
     {
       name         = "Admin"
       description  = "Central Administrative & Security Resources"
