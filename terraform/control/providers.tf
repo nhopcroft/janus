@@ -1,5 +1,5 @@
 provider "spacelift" {}
 
 provider "aws" {
-  region = "us-east-2"
+  region = "eu-north-1"
 }
