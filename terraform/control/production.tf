@@ -11,8 +11,16 @@ locals {
       space        = spacelift_space.production.id
       branch      = "main"
       enabled      = false
-    }
-  ]
+    },
+    {
+      name         = "Load-balancer"
+      description  = "Shared load balancer"
+      project_root = "terraform/stacks/load-balancer"
+      id           = "load-balancer"
+      space        = spacelift_space.production.id
+      branch      = "main"
+      enabled      = true
+    }  ]
 }
 
 resource "spacelift_space" "production" {
