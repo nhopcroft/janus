@@ -83,6 +83,7 @@ resource "spacelift_stack" "children" {
   description  = each.value.description
   name         = each.value.name
   project_root = each.value.project_root
+  space_id     = each.value.space
 
   labels = [
   ]
