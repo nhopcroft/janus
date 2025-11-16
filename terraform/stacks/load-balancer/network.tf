@@ -30,7 +30,7 @@ resource "aws_subnet" "public_b" {
   availability_zone = "eu-north-1b"
 
   tags = {
-    Name = "nhcloud-subnet-public1-eu-north-1b"
+    Name = "nhcloud-subnet-public2-eu-north-1b"
   }
 }
 
@@ -53,7 +53,7 @@ resource "aws_subnet" "private_b" {
   availability_zone = "eu-north-1b"
 
   tags = {
-    Name = "nhcloud-subnet-private1-eu-north-1b"
+    Name = "nhcloud-subnet-private2-eu-north-1b"
   }
 }
 
