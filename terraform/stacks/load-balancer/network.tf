@@ -1,7 +1,7 @@
 
 
 resource "aws_vpc" "primary" {
-  cidr_block       = "${var.class_b_prefix}.0.0/16"
+  cidr_block       = "10.20.0.0/16"
   instance_tenancy = "default"
 
   enable_dns_support   = true
@@ -15,8 +15,8 @@ resource "aws_vpc" "primary" {
 resource "aws_subnet" "public_a" {
   vpc_id = aws_vpc.primary.id
 
-  cidr_block        = "${var.class_b_prefix}.100.0/24"
-  availability_zone = data.aws_availability_zones.available.names[count.index]
+  cidr_block        = "10.20.100.0/24"
+  availability_zone = "eun1-az1"
 
   tags = {
     Name = "Public a"
@@ -26,8 +26,8 @@ resource "aws_subnet" "public_a" {
 resource "aws_subnet" "public_b" {
   vpc_id = aws_vpc.primary.id
 
-  cidr_block        = "${var.class_b_prefix}.101.0/24"
-  availability_zone = data.aws_availability_zones.available.names[count.index]
+  cidr_block        = "10.20.101.0/24"
+  availability_zone = "eun1-az2"
 
   tags = {
     Name = "Public a"
@@ -38,8 +38,8 @@ resource "aws_subnet" "public_b" {
 resource "aws_subnet" "private_a" {
   vpc_id = aws_vpc.primary.id
 
-  cidr_block        = "${var.class_b_prefix}.200.0/24"
-  availability_zone = data.aws_availability_zones.available.names[count.index]
+  cidr_block        = "10.20.200.0/24"
+  availability_zone = "eun1-az1"
 
   tags = {
     Name = "Private a"
@@ -49,8 +49,8 @@ resource "aws_subnet" "private_a" {
 resource "aws_subnet" "private_b" {
   vpc_id = aws_vpc.primary.id
 
-  cidr_block        = "${var.class_b_prefix}.201.0/24"
-  availability_zone = data.aws_availability_zones.available.names[count.index]
+  cidr_block        = "10.20.201.0/24"
+  availability_zone = "eun1-az2"
 
   tags = {
     Name = "Private a"
