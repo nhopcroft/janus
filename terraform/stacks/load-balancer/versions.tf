@@ -14,15 +14,3 @@ terraform {
     }
   }
 }
-
-locals {
-  tags = {
-    ProvisionedBy = "hand"
-    SourceRepo = "https://github.com/nhopcroft/devops/"
-    SourceLink = "https://github.com/nhopcroft/devops/tree/main/terraform/stacks/load-balancer"
-    Environment = var.deployment_environment != "" ? var.deployment_environment : "n/a"
-    Stack = "load-balancer"
-    Note = "This stack contains load balancer resources"
-  }
-
-}
