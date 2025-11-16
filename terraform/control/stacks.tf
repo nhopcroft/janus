@@ -10,6 +10,7 @@ locals {
       description  = "Central Administrative & Security Resources"
       project_root = "terraform/stacks/admin"
       id           = "admin"
+      space        = data.spacelift_space.root.id
     }
   ]
   stacks_to_not_create = [
@@ -18,48 +19,56 @@ locals {
       description  = "Shared Network for all Stacks"
       project_root = "terraform/stacks/network"
       id           = "network"
+      space        = data.spacelift_space.root.id
     },
     {
       name         = "Crypto"
       description  = "Shared Cryptography for all Stacks"
       project_root = "terraform/stacks/crypto"
       id           = "crypto"
+      space        = data.spacelift_space.root.id
     },
     {
       name         = "Runners"
       description  = "Shared CI Runners for all Stacks"
       project_root = "terraform/stacks/runners"
       id           = "runners"
+      space        = data.spacelift_space.root.id
     },
     {
       name         = "Webhooks"
       description  = "API Gateway Endpoints for Webhook Automation"
       project_root = "terraform/stacks/webhooks"
       id           = "webhooks"
+      space        = data.spacelift_space.root.id
     },
     {
       name         = "SSM"
       description  = "AWS Systems Manager Automation"
       project_root = "terraform/stacks/ssm"
       id           = "ssm"
+      space        = data.spacelift_space.root.id
     },
     {
       name         = "Ubuntu"
       description  = "Ubuntu Cloud Images"
       project_root = "terraform/stacks/ubuntu_cloudimg"
       id           = "ubuntu"
+      space        = data.spacelift_space.root.id
     },
     {
       name         = "Janus"
       description  = "Just Another Neural Utility System"
       project_root = "terraform/stacks/janus"
       id           = "janus"
+      space        = data.spacelift_space.root.id
     },
     {
       name         = "Scratch"
       description  = "Scratch Images"
       project_root = "terraform/stacks/scratch"
       id           = "scratch"
+      space        = data.spacelift_space.root.id
     }
   ]
 }
