@@ -15,22 +15,22 @@ resource "aws_vpc" "primary" {
 resource "aws_subnet" "public_a" {
   vpc_id = aws_vpc.primary.id
 
-  cidr_block        = "10.20.100.0/24"
-  availability_zone = "eun1-az1"
+  cidr_block        = "10.20.0.0/24"
+  availability_zone = "eu-north-1a"
 
   tags = {
-    Name = "Public a"
+    Name = "nhcloud-subnet-public1-eu-north-1a"
   }
 }
 
 resource "aws_subnet" "public_b" {
   vpc_id = aws_vpc.primary.id
 
-  cidr_block        = "10.20.101.0/24"
-  availability_zone = "eun1-az2"
+  cidr_block        = "10.20.16.0/24"
+  availability_zone = "eu-north-1b"
 
   tags = {
-    Name = "Public a"
+    Name = "nhcloud-subnet-public1-eu-north-1b"
   }
 }
 
@@ -38,22 +38,22 @@ resource "aws_subnet" "public_b" {
 resource "aws_subnet" "private_a" {
   vpc_id = aws_vpc.primary.id
 
-  cidr_block        = "10.20.200.0/24"
-  availability_zone = "eun1-az1"
+  cidr_block        = "10.20.128.0/24"
+  availability_zone = "eu-north-1a"
 
   tags = {
-    Name = "Private a"
+    Name = "nhcloud-subnet-private1-eu-north-1a"
   }
 }
 
 resource "aws_subnet" "private_b" {
   vpc_id = aws_vpc.primary.id
 
-  cidr_block        = "10.20.201.0/24"
-  availability_zone = "eun1-az2"
+  cidr_block        = "10.20.144.0/24"
+  availability_zone = "eu-north-1b"
 
   tags = {
-    Name = "Private a"
+    Name = "nhcloud-subnet-private1-eu-north-1b"
   }
 }
 
