@@ -15,7 +15,7 @@ resource "aws_vpc" "primary" {
 resource "aws_subnet" "public_a" {
   vpc_id = aws_vpc.primary.id
 
-  cidr_block        = "10.20.0.0/24"
+  cidr_block        = "10.20.0.0/20"
   availability_zone = "eu-north-1a"
 
   tags = {
@@ -26,7 +26,7 @@ resource "aws_subnet" "public_a" {
 resource "aws_subnet" "public_b" {
   vpc_id = aws_vpc.primary.id
 
-  cidr_block        = "10.20.16.0/24"
+  cidr_block        = "10.20.16.0/20"
   availability_zone = "eu-north-1b"
 
   tags = {
@@ -38,7 +38,7 @@ resource "aws_subnet" "public_b" {
 resource "aws_subnet" "private_a" {
   vpc_id = aws_vpc.primary.id
 
-  cidr_block        = "10.20.128.0/24"
+  cidr_block        = "10.20.128.0/20"
   availability_zone = "eu-north-1a"
 
   tags = {
@@ -49,7 +49,7 @@ resource "aws_subnet" "private_a" {
 resource "aws_subnet" "private_b" {
   vpc_id = aws_vpc.primary.id
 
-  cidr_block        = "10.20.144.0/24"
+  cidr_block        = "10.20.144.0/20"
   availability_zone = "eu-north-1b"
 
   tags = {
