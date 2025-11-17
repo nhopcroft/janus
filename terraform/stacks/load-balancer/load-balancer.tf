@@ -18,7 +18,7 @@ resource "aws_lb_listener" "http" {
     }
 }
 
-resource "aws_acm_certificate" "cert" {
+resource "aws_acm_certificate" "prz378" {
   domain_name       = "prz378.com"
   validation_method = "DNS"
 
@@ -31,7 +31,7 @@ data "aws_route53_zone" "prz378" {
     name = "prz378.com"
 }
 
-resource "aws_route53_record" "domain_validation" {
+resource "aws_route53_record" "prz378" {
   for_each = {
     for dvo in aws_acm_certificate.prz378.domain_validation_options : dvo.domain_name => {
       name   = dvo.resource_record_name
@@ -48,7 +48,7 @@ resource "aws_route53_record" "domain_validation" {
   zone_id         = data.aws_route53_zone.prz378.zone_id
 }
 
-resource "aws_acm_certificate_validation" "certificate_validation" {
+resource "aws_acm_certificate_validation" "prz378" {
   certificate_arn         = aws_acm_certificate.prz378.arn
   validation_record_fqdns = [for record in aws_route53_record.prz378 : record.fqdn]
 }
