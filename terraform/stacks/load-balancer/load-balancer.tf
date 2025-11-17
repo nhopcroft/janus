@@ -22,7 +22,7 @@ resource "aws_acm_certificate" "prz378" {
   domain_name       = "prz378.com"
   validation_method = "DNS"
 
-  subject_alternative_name = [ "*.prz378.com" ]
+  subject_alternative_names = [ "*.prz378.com" ]
   lifecycle {
     create_before_destroy = true
   }
