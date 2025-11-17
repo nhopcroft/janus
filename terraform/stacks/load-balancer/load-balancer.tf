@@ -18,6 +18,22 @@ resource "aws_lb_listener" "http" {
     }
 }
 
+resource "aws_lb_listener" "http" {
+    load_balancer_arn = aws_lb.load_balancer.arn
+    port = "443"
+    protocol = "HTTPS"
+    default_action {
+        type = "fixed-response"
+        fixed_response {
+            content_type = "text/plain"
+            message_body = "Hello"
+            status_code = "200"
+        }
+    }
+    ssl_policy        = "ELBSecurityPolicy-2016-08"
+    certificate_arn   = aws_acm_certificate.prz378.arn
+}
+
 resource "aws_acm_certificate" "prz378" {
   domain_name       = "prz378.com"
   validation_method = "DNS"
