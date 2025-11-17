@@ -5,7 +5,7 @@ resource "aws_lb" "load_balancer" {
 }
 
 resource "aws_lb_listener" "https" {
-    load_balancer_arm = aws_lb.load_balancer.arn
+    load_balancer_arn = aws_lb.load_balancer.arn
     port = "80"
     protocol = "HTTP"
     default_action {
