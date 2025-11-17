@@ -4,7 +4,7 @@ resource "aws_lb" "load_balancer" {
     subnets = [ aws_subnet.public_a.id, aws_subnet.public_b.id]
 }
 
-resource "aws_lb_listener" "https" {
+resource "aws_lb_listener" "http" {
     load_balancer_arn = aws_lb.load_balancer.arn
     port = "80"
     protocol = "HTTP"
