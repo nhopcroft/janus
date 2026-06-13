@@ -3,7 +3,6 @@ data "spacelift_account" "current" {}
 
 # This is the control stack we are currently in
 resource "spacelift_stack" "control" {
-  administrative        = true
   autodeploy            = true
   protect_from_deletion = true
 
@@ -26,7 +25,6 @@ resource "spacelift_stack" "control" {
 
 # This is the auth stack, which shares our permissions
 resource "spacelift_stack" "auth" {
-  administrative        = true
   autodeploy            = true
   protect_from_deletion = true
 

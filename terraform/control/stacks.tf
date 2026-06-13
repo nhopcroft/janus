@@ -76,7 +76,6 @@ locals {
 resource "spacelift_stack" "children" {
   for_each = { for stack in local.stacks_to_create : stack.name => stack }
 
-  administrative = false
   autodeploy     = true
 
   github_action_deploy = false
