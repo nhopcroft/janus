@@ -10,6 +10,11 @@
 [![SLSA 3](https://slsa.dev/images/gh-badge-level3.svg)](https://slsa.dev)
 <!-- editorconfig-checker-enable -->
 
+## A history, of sorts
+
+- 2026-06-13 Obtained domains notetaking.ninja and taking.ninja (with the idea of being note.taking.ninja) - I'm not sure exactly what I'm going to do with these things yet, but I've been listening to a book about notebooks and it strikes me there is a place for something similar to a commonplace book for the internet. What I'm thinking is something that allows you to take copies of interesting things from the internet and keep them in a compilation - with references to their sources - you are really caching rather than trying to pass off anything as your own work. I've no idea yet how this is going to work, if it will at all, but I like the idea of being a ninja, even if it is only virtually.
+
+
 ## Join the Community
 
 - [Code of Conduct](CODE_OF_CONDUCT.md)
