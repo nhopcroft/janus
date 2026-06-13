@@ -17,7 +17,7 @@
 
 # Use a multi-stage docker build to limit production dependencies.
 
-FROM node:22-bookworm AS BUILD
+FROM node:26-bookworm AS BUILD
 
 WORKDIR /home/node
 
@@ -34,7 +34,7 @@ COPY . ./
 
 RUN npm run compile
 
-FROM node:22-bookworm
+FROM node:26-bookworm
 
 SHELL ["/bin/bash", "-o", "pipefail", "-e", "-c"]
 ENV SHELL=/bin/bash
