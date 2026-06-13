@@ -2,8 +2,7 @@
 locals {
   enabled_production_stacks = [for stack in local.production_stacks : stack if stack.enabled == true]
 
-  production_stacks = 
-  [
+  production_stacks = [
     {
       name         = "Runners-prod"
       description  = "Shared CI Runners for all Stacks"
