@@ -2,7 +2,8 @@
 locals {
   enabled_production_stacks = [for stack in local.production_stacks : stack if stack.enabled == true]
 
-  production_stacks = [
+  production_stacks = 
+  [
     {
       name         = "Runners-prod"
       description  = "Shared CI Runners for all Stacks"
@@ -19,8 +20,9 @@ locals {
       id           = "load-balancer"
       space        = spacelift_space.production.id
       branch      = "main"
-      enabled      = true
-    }  ]
+      enabled      = false
+    }
+  ]
 }
 
 resource "spacelift_space" "production" {
