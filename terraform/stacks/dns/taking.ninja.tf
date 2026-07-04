@@ -4,7 +4,7 @@ resource "aws_route53_zone" "taking_ninja" {
 }
 
 resource "aws_route53_record" "taking_ns" {
-    zone_id = aws_route53_zone.taking_ninja
+    zone_id = aws_route53_zone.taking_ninja.zone_id
     name = "taking.ninja"
     type = "NS"
     ttl = "30"
