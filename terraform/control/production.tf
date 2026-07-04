@@ -20,6 +20,15 @@ locals {
       space        = spacelift_space.production.id
       branch      = "main"
       enabled      = false
+    },
+    {
+      name         = "DNS"
+      description  = "DNS zones"
+      project_root = "terraform/stacks/dns"
+      id           = "dns"
+      space        = spacelift_space.production.id
+      branch      = "main"
+      enabled      = true
     }
   ]
 }
