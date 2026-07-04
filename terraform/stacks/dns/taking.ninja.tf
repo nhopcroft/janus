@@ -2,7 +2,8 @@
 resource "aws_route53_zone" "taking_ninja" {
     name = "taking.ninja"
 }
-
+/*
+  I am going to remove this for the moment
 resource "aws_route53_record" "taking_ns" {
     zone_id = aws_route53_zone.taking_ninja.zone_id
     name = "taking.ninja"
@@ -10,3 +11,4 @@ resource "aws_route53_record" "taking_ns" {
     ttl = "30"
     records = aws_route53_zone.taking_ninja.name_servers
 }
+*/
