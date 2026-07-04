@@ -8,5 +8,5 @@ resource "aws_route53_record" "taking_ns" {
     name = "taking.ninja"
     type = "NS"
     ttl = "30"
-    records = aws_route53_zone.name_servers
+    records = aws_route53_zone.taking_ninja.name_servers
 }
