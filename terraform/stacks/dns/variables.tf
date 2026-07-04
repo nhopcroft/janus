@@ -1,4 +1,11 @@
 
+variable "deployment_environment" {
+  type        = string
+  description = "The deployment environment (e.g. dev, staging, prod)."
+  sensitive   = false
+  default = ""
+}
+
 locals {
   tags = {
     ProvisionedBy = "Terraform"
