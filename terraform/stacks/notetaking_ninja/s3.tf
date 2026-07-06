@@ -10,7 +10,7 @@ resource "aws_s3_bucket_website_configuration" "notetaking_ninja" {
     }
 }
 
-resource "aws_s3_object {
+resource "aws_s3_object" "index" {
     bucket = aws_s3_bucket.notetaking_ninja.name
     content = "Hello"
 }
