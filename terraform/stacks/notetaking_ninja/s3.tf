@@ -1,6 +1,6 @@
 
 resource "aws_s3_bucket" "notetaking_ninja" {
-    name = "notetaking.ninja"
+    bucket = "notetaking.ninja"
 }
 
 resource "aws_s3_bucket_website_configuration" "notetaking_ninja" {
