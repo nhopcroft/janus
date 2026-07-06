@@ -34,7 +34,7 @@ locals {
       name         = "notetaking-ninja"
       description  = "Notetaking ninja static site"
       project_root = "terraform/stacks/notetaking_ninja"
-      id           = "notetaking_ninja"
+      id           = "notetaking-ninja"
       space        = spacelift_space.production.id
       branch      = "main"
       enabled      = true
