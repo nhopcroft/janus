@@ -12,5 +12,6 @@ resource "aws_s3_bucket_website_configuration" "notetaking_ninja" {
 
 resource "aws_s3_object" "index" {
     bucket = aws_s3_bucket.notetaking_ninja.id
+    key = "index.html"
     content = "Hello"
 }
