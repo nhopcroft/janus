@@ -1,6 +1,6 @@
 #checkov:skip=CKV_DOCKER_3:Handled by devcontainer
 #checkov:skip=CKV_DOCKER_2:Not applicable
-FROM mcr.microsoft.com/devcontainers/typescript-node:22-bookworm as build
+FROM mcr.microsoft.com/devcontainers/typescript-node:24-bookworm as build
 ARG TARGETARCH
 
 LABEL org.opencontainers.image.authors="Jaremy Hatler <hatler.jaremy@gmail.com>"
