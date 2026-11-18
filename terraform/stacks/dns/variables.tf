@@ -6,6 +6,12 @@ variable "deployment_environment" {
   default = ""
 }
 
+variable "domain" {
+  type = string
+  description = "Name of the domain to configure"
+  sensitive = false
+}
+
 locals {
   tags = {
     ProvisionedBy = "Terraform"

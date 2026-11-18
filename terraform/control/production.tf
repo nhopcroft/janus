@@ -49,6 +49,15 @@ locals {
       enabled      = true
     },
     {
+      name         = "prz378-dns"
+      description  = "DNS for prz378.com"
+      project_root = "terraform/stacks/dns"
+      id           = "prz378-dns"
+      space        = spacelift_space.production.id
+      branch      = "main"
+      enabled      = true
+    },
+    {
       name         = "prz378-email"
       description  = "email identity for prz378.com"
       project_root = "terraform/stacks/email"
@@ -104,6 +113,12 @@ resource "spacelift_context_attachment" "production" {
 //
 //
 
+resource "spacelift_stack_dependency" "prz378_dns" {
+  count               = [for stack in local.production_stacks : stack.enabled if stack.name == "prz378-dns"] == [true] ? 1 : 0
+  stack_id            = spacelift_stack.children["prz378-dns"].id
+  depends_on_stack_id = spacelift_stack.children["prz378"].id
+}
+
 resource "spacelift_stack_dependency" "prz378_email" {
   count               = [for stack in local.production_stacks : stack.enabled if stack.name == "prz378-email"] == [true] ? 1 : 0
   stack_id            = spacelift_stack.children["prz378-email"].id
@@ -114,7 +129,14 @@ resource "spacelift_stack_dependency" "prz378_email" {
 //
 //
 
-resource "spacelift_stack_dependency_reference" "email_domain" {
+resource "spacelift_stack_dependency_reference" "prz378_dns_domain" {
+  count               = [for stack in local.production_stacks : stack.enabled if stack.name == "prz378-dns"] == [true] ? 1 : 0
+  stack_dependency_id = spacelift_stack_dependency.prz378_email[0].id
+  output_name         = "TF_VAR_domain"
+  input_name          = "TF_VAR_domain"
+}
+
+resource "spacelift_stack_dependency_reference" "prz378_email_domain" {
   count               = [for stack in local.production_stacks : stack.enabled if stack.name == "prz378-email"] == [true] ? 1 : 0
   stack_dependency_id = spacelift_stack_dependency.prz378_email[0].id
   output_name         = "TF_VAR_domain"
