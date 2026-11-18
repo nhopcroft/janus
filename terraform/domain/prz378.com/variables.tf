@@ -15,8 +15,8 @@ locals {
         ProvisionedBy = "terraform"
         SourceRepo = "https://github.com/nhopcroft/janus/"
         Environment = var.deployment_environment != "" ? var.deployment_environment : "n/a"
-        Stack = "email"
-        Note = "This stack contains the email related resources"
+        Stack = "prz378"
+        Note = "This stack contains the definition of prz378.com"
         Documentation = "no documentation yet"
         Service = "infrastructure"
     }
