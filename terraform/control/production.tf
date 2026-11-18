@@ -40,6 +40,15 @@ locals {
       enabled      = true
     },
     {
+      name         = "prz378"
+      description  = "Domain definition for prz378.com"
+      project_root = "terraform/domain/prz378.com"
+      id           = "prz378"
+      space        = spacelift_space.production.id
+      branch      = "main"
+      enabled      = true
+    },
+    {
       name         = "email-prz378"
       description  = "email identity for prz378.com"
       project_root = "terraform/stacks/email"
