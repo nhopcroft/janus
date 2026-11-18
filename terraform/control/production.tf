@@ -52,7 +52,7 @@ locals {
       name         = "prz378-email"
       description  = "email identity for prz378.com"
       project_root = "terraform/stacks/email"
-      id           = "email-prz378"
+      id           = "prz378-email"
       space        = spacelift_space.production.id
       branch      = "main"
       enabled      = true
