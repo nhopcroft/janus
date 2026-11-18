@@ -49,7 +49,7 @@ locals {
       enabled      = true
     },
     {
-      name         = "email-prz378"
+      name         = "prz378-email"
       description  = "email identity for prz378.com"
       project_root = "terraform/stacks/email"
       id           = "email-prz378"
@@ -98,4 +98,25 @@ resource "spacelift_context_attachment" "production" {
     spacelift_stack.children,
     spacelift_context.production
   ]
+}
+
+//
+//
+//
+
+resource "spacelift_stack_dependency" "prz378_email" {
+  count               = [for stack in local.production_stacks : stack.enabled if stack.name == "email-prz36"] == [true] ? 1 : 0
+  stack_id            = spacelift_stack.children["prz378-email"].id
+  depends_on_stack_id = spacelift_stack.children["prz378"].id
+}
+
+//
+//
+//
+
+resource "spacelift_stack_dependency_reference" "email_domain" {
+  count               = [for stack in local.production_stacks : stack.enabled if stack.name == "prz378-email"] == [true] ? 1 : 0
+  stack_dependency_id = spacelift_stack_dependency.email_prz378[0].id
+  output_name         = "TF_VAR_domain"
+  input_name          = "TF_VAR_domain"
 }
