@@ -131,7 +131,7 @@ resource "spacelift_stack_dependency" "prz378_email" {
 
 resource "spacelift_stack_dependency_reference" "prz378_dns_domain" {
   count               = [for stack in local.production_stacks : stack.enabled if stack.name == "prz378-dns"] == [true] ? 1 : 0
-  stack_dependency_id = spacelift_stack_dependency.prz378_email[0].id
+  stack_dependency_id = spacelift_stack_dependency.prz378_dns[0].id
   output_name         = "TF_VAR_domain"
   input_name          = "TF_VAR_domain"
 }
