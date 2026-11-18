@@ -10,17 +10,6 @@ variable "deployment_environment" {
   sensitive   = false
 }
 
-variable "zone_id" {
-  type        = string
-  description = "The DNS zone ID for the email stack."
-  sensitive   = false
-}
-
-variable "domain" {
-    type        = string
-    description = "Domain name"
-}
-
 locals {
     tags = {
         ProvisionedBy = "terraform"
