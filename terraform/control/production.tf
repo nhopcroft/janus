@@ -105,7 +105,7 @@ resource "spacelift_context_attachment" "production" {
 //
 
 resource "spacelift_stack_dependency" "prz378_email" {
-  count               = [for stack in local.production_stacks : stack.enabled if stack.name == "prz36-email"] == [true] ? 1 : 0
+  count               = [for stack in local.production_stacks : stack.enabled if stack.name == "prz378-email"] == [true] ? 1 : 0
   stack_id            = spacelift_stack.children["prz378-email"].id
   depends_on_stack_id = spacelift_stack.children["prz378"].id
 }
