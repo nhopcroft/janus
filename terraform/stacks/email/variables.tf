@@ -10,12 +10,6 @@ variable "deployment_environment" {
   sensitive   = false
 }
 
-variable "zone_id" {
-  type        = string
-  description = "The DNS zone ID for the email stack."
-  sensitive   = false
-}
-
 variable "domain" {
     type        = string
     description = "Domain name"
@@ -26,7 +20,7 @@ locals {
         ProvisionedBy = "terraform"
         SourceRepo = "https://github.com/nhopcroft/janus/"
         Environment = var.deployment_environment != "" ? var.deployment_environment : "n/a"
-        Stack = "email"
+        Stack = "prz378.com"
         Note = "This stack contains the email related resources"
         Documentation = "no documentation yet"
         Service = "infrastructure"

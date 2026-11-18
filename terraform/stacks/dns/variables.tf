@@ -10,6 +10,7 @@ variable "domain" {
   type = string
   description = "Name of the domain to configure"
   sensitive = false
+  default = "prz378.com"
 }
 
 locals {
