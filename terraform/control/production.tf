@@ -144,7 +144,7 @@ resource "spacelift_stack_dependency_reference" "prz378_email_domain" {
 }
 
 
-resource "spacelift_stack_dependency_reference" "prz378_email_domain" {
+resource "spacelift_stack_dependency_reference" "prz378_email_zone" {
   count               = [for stack in local.production_stacks : stack.enabled if stack.name == "prz378-email"] == [true] ? 1 : 0
   stack_dependency_id = spacelift_stack_dependency.prz378_email[0].id
   output_name         = "TF_VAR_zone_id"
