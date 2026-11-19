@@ -28,7 +28,7 @@ locals {
       id           = "dns"
       space        = spacelift_space.production.id
       branch      = "main"
-      enabled      = true
+      enabled      = false
     },
     {
       name         = "notetaking-ninja"
