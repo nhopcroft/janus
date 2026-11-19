@@ -32,9 +32,18 @@ locals {
     },
     {
       name         = "notetaking-ninja"
-      description  = "Notetaking ninja static site"
-      project_root = "terraform/stacks/notetaking_ninja"
+      description  = "Notetaking ninja domain definition"
+      project_root = "terraform/domain/notetaking.ninja"
       id           = "notetaking-ninja"
+      space        = spacelift_space.production.id
+      branch      = "main"
+      enabled      = true
+    },
+    {
+      name         = "taking-ninja"
+      description  = "taking ninja domain definition"
+      project_root = "terraform/domain/taking.ninja"
+      id           = "taking-ninja"
       space        = spacelift_space.production.id
       branch      = "main"
       enabled      = true
