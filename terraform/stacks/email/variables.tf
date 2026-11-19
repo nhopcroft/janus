@@ -15,6 +15,11 @@ variable "domain" {
     description = "Domain name"
 }
 
+variable "zone_id" {
+  type        = string
+  description = "Domain hosted zone id"
+}
+
 locals {
     tags = {
         ProvisionedBy = "terraform"
