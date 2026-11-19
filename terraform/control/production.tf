@@ -40,10 +40,46 @@ locals {
       enabled      = true
     },
     {
+      name         = "notetaking-ninja-dns"
+      description  = "DNS for notetaking.ninja"
+      project_root = "terraform/stacks/dns"
+      id           = "notetaking-ninja-dns"
+      space        = spacelift_space.production.id
+      branch      = "main"
+      enabled      = true
+    },
+    {
+      name         = "notetaking-ninja-email"
+      description  = "Email for notetaking.ninja"
+      project_root = "terraform/stacks/email"
+      id           = "notetaking-ninja-email"
+      space        = spacelift_space.production.id
+      branch      = "main"
+      enabled      = true
+    },
+    {
       name         = "taking-ninja"
       description  = "taking ninja domain definition"
       project_root = "terraform/domain/taking.ninja"
       id           = "taking-ninja"
+      space        = spacelift_space.production.id
+      branch      = "main"
+      enabled      = true
+    },
+    {
+      name         = "taking-ninja-dns"
+      description  = "DNS for taking.ninja"
+      project_root = "terraform/stacks/dns"
+      id           = "taking-ninja-dns"
+      space        = spacelift_space.production.id
+      branch      = "main"
+      enabled      = true
+    },
+    {
+      name         = "taking-ninja-email"
+      description  = "Email for taking.ninja"
+      project_root = "terraform/stacks/email"
+      id           = "taking-ninja-email"
       space        = spacelift_space.production.id
       branch      = "main"
       enabled      = true
@@ -134,6 +170,30 @@ resource "spacelift_stack_dependency" "prz378_email" {
   depends_on_stack_id = spacelift_stack.children["prz378-dns"].id
 }
 
+resource "spacelift_stack_dependency" "notetaking_dns" {
+  count               = [for stack in local.production_stacks : stack.enabled if stack.name == "notetaking-ninja-dns"] == [true] ? 1 : 0
+  stack_id            = spacelift_stack.children["notetaking-ninja-dns"].id
+  depends_on_stack_id = spacelift_stack.children["notetaking-ninja"].id
+}
+
+resource "spacelift_stack_dependency" "notetaking_email" {
+  count               = [for stack in local.production_stacks : stack.enabled if stack.name == "notetaking-ninja-email"] == [true] ? 1 : 0
+  stack_id            = spacelift_stack.children["notetaking-ninja-email"].id
+  depends_on_stack_id = spacelift_stack.children["notetaking-ninja-dns"].id
+}
+
+resource "spacelift_stack_dependency" "taking_dns" {
+  count               = [for stack in local.production_stacks : stack.enabled if stack.name == "taking-ninja-dns"] == [true] ? 1 : 0
+  stack_id            = spacelift_stack.children["taking-ninja-dns"].id
+  depends_on_stack_id = spacelift_stack.children["taking-ninja"].id
+}
+
+resource "spacelift_stack_dependency" "taking_email" {
+  count               = [for stack in local.production_stacks : stack.enabled if stack.name == "taking-ninja-email"] == [true] ? 1 : 0
+  stack_id            = spacelift_stack.children["taking-ninja-email"].id
+  depends_on_stack_id = spacelift_stack.children["taking-ninja-dns"].id
+}
+
 //
 //
 //
@@ -156,6 +216,50 @@ resource "spacelift_stack_dependency_reference" "prz378_email_domain" {
 resource "spacelift_stack_dependency_reference" "prz378_email_zone" {
   count               = [for stack in local.production_stacks : stack.enabled if stack.name == "prz378-email"] == [true] ? 1 : 0
   stack_dependency_id = spacelift_stack_dependency.prz378_email[0].id
+  output_name         = "TF_VAR_zone_id"
+  input_name          = "TF_VAR_zone_id"
+}
+
+resource "spacelift_stack_dependency_reference" "notetaking_dns_domain" {
+  count               = [for stack in local.production_stacks : stack.enabled if stack.name == "notetaking-ninja-dns"] == [true] ? 1 : 0
+  stack_dependency_id = spacelift_stack_dependency.notetaking_dns[0].id
+  output_name         = "TF_VAR_domain"
+  input_name          = "TF_VAR_domain"
+}
+
+resource "spacelift_stack_dependency_reference" "notetaking_email_domain" {
+  count               = [for stack in local.production_stacks : stack.enabled if stack.name == "notetaking-ninja-email"] == [true] ? 1 : 0
+  stack_dependency_id = spacelift_stack_dependency.notetaking_email[0].id
+  output_name         = "TF_VAR_domain"
+  input_name          = "TF_VAR_domain"
+}
+
+resource "spacelift_stack_dependency_reference" "taking_email_zone" {
+  count               = [for stack in local.production_stacks : stack.enabled if stack.name == "taking-ninja-email"] == [true] ? 1 : 0
+  stack_dependency_id = spacelift_stack_dependency.taking_email[0].id
+  output_name         = "TF_VAR_zone_id"
+  input_name          = "TF_VAR_zone_id"
+}
+
+
+resource "spacelift_stack_dependency_reference" "taking_dns_domain" {
+  count               = [for stack in local.production_stacks : stack.enabled if stack.name == "taking-ninja-dns"] == [true] ? 1 : 0
+  stack_dependency_id = spacelift_stack_dependency.taking_dns[0].id
+  output_name         = "TF_VAR_domain"
+  input_name          = "TF_VAR_domain"
+}
+
+resource "spacelift_stack_dependency_reference" "taking_email_domain" {
+  count               = [for stack in local.production_stacks : stack.enabled if stack.name == "taking-ninja-email"] == [true] ? 1 : 0
+  stack_dependency_id = spacelift_stack_dependency.taking_email[0].id
+  output_name         = "TF_VAR_domain"
+  input_name          = "TF_VAR_domain"
+}
+
+
+resource "spacelift_stack_dependency_reference" "taking_email_zone" {
+  count               = [for stack in local.production_stacks : stack.enabled if stack.name == "taking-ninja-email"] == [true] ? 1 : 0
+  stack_dependency_id = spacelift_stack_dependency.taking_email[0].id
   output_name         = "TF_VAR_zone_id"
   input_name          = "TF_VAR_zone_id"
 }
