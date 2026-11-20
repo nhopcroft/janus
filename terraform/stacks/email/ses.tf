@@ -28,3 +28,7 @@ resource "aws_route53_record" "example_amazonses_dkim_record" {
   ttl     = "600"
   records = ["${aws_ses_domain_dkim.domain.dkim_tokens[count.index]}.dkim.amazonses.com"]
 }
+
+output "zone_id" {
+  value = var.zone_id
+}
