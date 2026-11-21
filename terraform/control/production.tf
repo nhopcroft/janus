@@ -226,7 +226,7 @@ resource "spacelift_stack_dependency_reference" "notetaking_dns_domain" {
   output_name         = "TF_VAR_domain"
   input_name          = "TF_VAR_domain"
 }
-
+/*
 resource "spacelift_stack_dependency_reference" "notetaking_email_domain" {
   count               = [for stack in local.production_stacks : stack.enabled if stack.name == "notetaking-ninja-email"] == [true] ? 1 : 0
   stack_dependency_id = spacelift_stack_dependency.notetaking_email[0].id
@@ -240,8 +240,7 @@ resource "spacelift_stack_dependency_reference" "notetaking_email_zone" {
   output_name         = "TF_VAR_zone_id"
   input_name          = "TF_VAR_zone_id"
 }
-
-
+*/
 resource "spacelift_stack_dependency_reference" "taking_dns_domain" {
   count               = [for stack in local.production_stacks : stack.enabled if stack.name == "taking-ninja-dns"] == [true] ? 1 : 0
   stack_dependency_id = spacelift_stack_dependency.taking_dns[0].id
