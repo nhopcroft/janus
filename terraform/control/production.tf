@@ -239,7 +239,7 @@ resource "spacelift_stack_dependency_reference" "prz378_email_zone" {
   output_name         = "TF_VAR_zone_id"
   input_name          = "TF_VAR_zone_id"
 }
-prz378_cognito_domain
+
 resource "spacelift_stack_dependency_reference" "prz378_cognito_short_name" {
   count               = [for stack in local.production_stacks : stack.enabled if stack.name == "prz378-cognito"] == [true] ? 1 : 0
   stack_dependency_id = spacelift_stack_dependency.prz378_cognito_domain[0].id
