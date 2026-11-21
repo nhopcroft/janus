@@ -110,6 +110,15 @@ locals {
       space        = spacelift_space.production.id
       branch      = "main"
       enabled      = true
+    },
+    {
+      name         = "prz378-cognito"
+      description  = "cognito for prz378.com"
+      project_root = "terraform/stacks/cognito"
+      id           = "prz378-cognito"
+      space        = spacelift_space.production.id
+      branch      = "main"
+      enabled      = true
     }
   ]
 }
