@@ -47,12 +47,12 @@ resource "aws_cognito_user_pool" "pool" {
 
 resource "aws_cognito_user_pool_domain" "user_pool" {
   domain       = "${var.ses_domain_identity}-${var.deployment_environment}"
-  user_pool_id = aws_cognito_user_pool.devops.id
+  user_pool_id = aws_cognito_user_pool.pool.id
 }
 
 resource "aws_cognito_user_pool_client" "web" {
   name         = "${var.ses_domain_identity}-${var.deployment_environment}"
-  user_pool_id = aws_cognito_user_pool.user_pool.id
+  user_pool_id = aws_cognito_user_pool.pool.id
 
   generate_secret                      = false
   allowed_oauth_flows_user_pool_client = true
