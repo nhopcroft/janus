@@ -46,7 +46,7 @@ resource "aws_cognito_user_pool" "pool" {
 }
 
 resource "aws_cognito_user_pool_domain" "user_pool" {
-  domain       = "${var.ses_domain_identity}-${var.deployment_environment}"
+  domain       = "${var.short_name}-${var.deployment_environment}"
   user_pool_id = aws_cognito_user_pool.pool.id
 }
 

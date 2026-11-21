@@ -179,12 +179,17 @@ resource "spacelift_stack_dependency" "prz378_email" {
   depends_on_stack_id = spacelift_stack.children["prz378-dns"].id
 }
 
+resource "spacelift_stack_dependency" "prz378_cognito_domain" {
+  count               = [for stack in local.production_stacks : stack.enabled if stack.name == "prz378-cognito"] == [true] ? 1 : 0
+  stack_id            = spacelift_stack.children["prz378-cognito"].id
+  depends_on_stack_id = spacelift_stack.children["prz378"].id
+}
+
 resource "spacelift_stack_dependency" "prz378_cognito" {
   count               = [for stack in local.production_stacks : stack.enabled if stack.name == "prz378-cognito"] == [true] ? 1 : 0
   stack_id            = spacelift_stack.children["prz378-cognito"].id
   depends_on_stack_id = spacelift_stack.children["prz378-email"].id
 }
-
 
 resource "spacelift_stack_dependency" "notetaking_dns" {
   count               = [for stack in local.production_stacks : stack.enabled if stack.name == "notetaking-ninja-dns"] == [true] ? 1 : 0
@@ -233,6 +238,13 @@ resource "spacelift_stack_dependency_reference" "prz378_email_zone" {
   stack_dependency_id = spacelift_stack_dependency.prz378_email[0].id
   output_name         = "TF_VAR_zone_id"
   input_name          = "TF_VAR_zone_id"
+}
+prz378_cognito_domain
+resource "spacelift_stack_dependency_reference" "prz378_cognito_short_name" {
+  count               = [for stack in local.production_stacks : stack.enabled if stack.name == "prz378-cognito"] == [true] ? 1 : 0
+  stack_dependency_id = spacelift_stack_dependency.prz378_cognito_domain[0].id
+  output_name         = "TF_VAR_short_name"
+  input_name          = "TF_VAR_short_name"
 }
 
 resource "spacelift_stack_dependency_reference" "prz378_cognito_email_domain" {

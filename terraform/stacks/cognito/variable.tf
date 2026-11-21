@@ -9,6 +9,11 @@ variable "deployment_environment" {
   description = "The deployment environment for this Cognito user pool."
 }
 
+variable "short_name" {
+    type        = string
+    description = "Domain short name"
+}
+
 variable "ses_domain_identity" {
     type        = string
     description = "SES Domain identity to use"
